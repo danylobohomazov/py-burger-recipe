@@ -40,8 +40,9 @@ class OneOf(Validator):
         self.options = options
 
     def validate(self, value: str) -> bool:
+        self.options = tuple(self.options)
         if value not in self.options:
-            raise ValueError(f"Expected {value} to be one of {tuple(self.options)}.")
+            raise ValueError(f"Expected {value} to be one of {self.options}.")
         return True
 
 
